@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Box</title>
+<!-- three.jsを読み込む(CDN) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.min.js"></script>
+</head>
+<body>
+  <script>
+    var init = function() {
+    // レンダラーを作成
+    var renderer = new THREE.WebGLRenderer();
+    // レンダラーのサイズを設定
+    renderer.setSize(800, 600);
+    // canvasをbodyに追加
+    document.body.appendChild(renderer.domElement);
+    // シーンを作成
+    var scene = new THREE.Scene();
+    // カメラを作成
+    var camera = new THREE.PerspectiveCamera(45, 800 / 600, 1, 1000);
+      
+    // 球を作成
+    var sphereGeometry1 = new THREE.SphereGeometry( 0.25, 32, 32 );
+    var sphereMaterial1 = new THREE. MeshPhongMaterial( {color: 0x7b68ee} );
+    var sphereMaterial2 = new THREE. MeshPhongMaterial( {color: 0xff33ff} );
+    var sphereMaterial3 = new THREE. MeshPhongMaterial( {color: 0x33ff33} );
+    var sphereMaterial4 = new THREE. MeshPhongMaterial( {color: 0xff3333} );
+    var sphere = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
+    sphere.position.set( -2.5, -2, -5 );
+    scene.add( sphere );
+    var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
+    sphere2.position.set( 2.5, -2, -5 );
+    scene.add( sphere2 );
+    var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial3 );
+    sphere3.position.set( -2.5, 2, -5 );
+    scene.add( sphere3 );
+    var sphere4 = new THREE.Mesh( sphereGeometry1, sphereMaterial4 );
+    sphere4.position.set( 2.5, 2, -5 );
+    scene.add( sphere4 );
+    // 球(ワイヤーフレームモデル)を作成
+    var sphereGeometry2 = new THREE.SphereGeometry( 0.5, 32, 32 );
+    var sphereMaterial5 = new THREE. MeshPhongMaterial( {color: 0x7b68ee,wireframe:true} );
+    var sphereMaterial6 = new THREE. MeshPhongMaterial( {color: 0xff33ff,wireframe:true} );
+    var sphereMaterial7 = new THREE. MeshPhongMaterial( {color: 0x33ff33,wireframe:true} );
+    var sphereMaterial8 = new THREE. MeshPhongMaterial( {color: 0xff3333,wireframe:true} );
+    var w_sphere = new THREE.Mesh( sphereGeometry2, sphereMaterial5 );
+    w_sphere.position.set( -2.5, -2, -5 );
+    scene.add( w_sphere );
+    var w_sphere2 = new THREE.Mesh( sphereGeometry2, sphereMaterial6 );
+    w_sphere2.position.set( 2.5, -2, -5 );
+    scene.add( w_sphere2 );
+    var w_sphere3 = new THREE.Mesh( sphereGeometry2, sphereMaterial7 );
+    w_sphere3.position.set( -2.5, 2, -5 );
+    scene.add( w_sphere3 );
+    var w_sphere4 = new THREE.Mesh( sphereGeometry2, sphereMaterial8 );
+    w_sphere4.position.set( 2.5, 2, -5 );
+    scene.add( w_sphere4 );
+
+    // 円錐を作成
+    var coneGeometry = new THREE.ConeGeometry(0.5, 1, 100);
+    var coneMaterial1 = new THREE.MeshPhongMaterial({ color: 0xffff00 });
+    var coneMaterial2 = new THREE.MeshPhongMaterial({ color: 0x9400d3 });
+    var coneDistance = 1.0; // 円錐同士の横方向の距離
+    var coneYPosition = 1.5; // 円錐のY軸位置
+    var coneYPosition2 = -1.5;
+
+    var cone1 = new THREE.Mesh(coneGeometry, coneMaterial1);
+    cone1.position.set(-2.0, coneYPosition, -5);
+    cone1.lookAt(camera.position);
+    scene.add(cone1);
+
+    var cone2 = new THREE.Mesh(coneGeometry, coneMaterial2);
+    cone2.position.set(-2.0 + coneDistance, coneYPosition, -5);
+    cone2.lookAt(camera.position);
+    scene.add(cone2);
+
+    var cone3 = new THREE.Mesh(coneGeometry, coneMaterial1);
+    cone3.position.set(-2.0 + coneDistance*2, coneYPosition, -5);
+    cone3.lookAt(camera.position);
+    scene.add(cone3);
+
+    var cone4 = new THREE.Mesh(coneGeometry, coneMaterial2);
+    cone4.position.set(-2.0 + coneDistance*3, coneYPosition, -5);
+    cone4.lookAt(camera.position);
+    scene.add(cone4);
+
+    var cone5 = new THREE.Mesh(coneGeometry, coneMaterial1);
+    cone5.position.set(-2.0 + coneDistance*4, coneYPosition, -5);
+    cone5.lookAt(camera.position);
+    scene.add(cone5);
+
+    var cone6 = new THREE.Mesh(coneGeometry, coneMaterial2);
+    cone6.position.set(-2.0, coneYPosition2, -5);
+    cone6.lookAt(camera.position);
+    scene.add(cone6);
+
+    var cone7 = new THREE.Mesh(coneGeometry, coneMaterial1);
+    cone7.position.set(-2.0 + coneDistance, coneYPosition2, -5);
+    cone7.lookAt(camera.position);
+    scene.add(cone7);
+
+    var cone8 = new THREE.Mesh(coneGeometry, coneMaterial2);
+    cone8.position.set(-2.0 + coneDistance*2, coneYPosition2, -5);
+    cone8.lookAt(camera.position);
+    scene.add(cone8);
+
+    var cone9 = new THREE.Mesh(coneGeometry, coneMaterial1);
+    cone9.position.set(-2.0 + coneDistance*3, coneYPosition2, -5);
+    cone9.lookAt(camera.position);
+    scene.add(cone9);
+
+    var cone10 = new THREE.Mesh(coneGeometry, coneMaterial2);
+    cone10.position.set(-2.0 + coneDistance*4, coneYPosition2, -5);
+    cone10.lookAt(camera.position);
+    scene.add(cone10);
+
+    // 平行光源を生成
+    var light1 = new THREE.DirectionalLight(0xffffff);
+    light1.position.set(1, 1, 1);
+    scene.add(light1);
+    var light2 = new THREE.DirectionalLight(0xffffff);
+    light2.position.set(-1, 1, 1);
+    scene.add(light2);
+
+    var update = function() {
+    requestAnimationFrame(update);
+    // 箱を回転させる
+    sphere.position.x += 0.01;
+    sphere.position.y += 0.01;
+    sphere.position.z += 0.005;
+    w_sphere.position.x += 0.01;
+    w_sphere.position.y += 0.01;
+    w_sphere.position.z += 0.005;
+
+    sphere2.position.x -= 0.01;
+    sphere2.position.y += 0.01;
+    sphere2.position.z += 0.005;
+    w_sphere2.position.x -= 0.01;
+    w_sphere2.position.y += 0.01;
+    w_sphere2.position.z += 0.005;
+
+    sphere3.position.x += 0.01;
+    sphere3.position.y -= 0.01;
+    sphere3.position.z += 0.005;
+    w_sphere3.position.x += 0.01;
+    w_sphere3.position.y -= 0.01;
+    w_sphere3.position.z += 0.005;
+
+    sphere4.position.x -= 0.01;
+    sphere4.position.y -= 0.01;
+    sphere4.position.z += 0.005;
+    w_sphere4.position.x -= 0.01;
+    w_sphere4.position.y -= 0.01;
+    w_sphere4.position.z += 0.005;
+
+    cone1.rotation.x += 0.01;
+    cone2.rotation.x -= 0.01;
+    cone3.rotation.x += 0.01;
+    cone4.rotation.x -= 0.01;
+    cone5.rotation.x += 0.01;
+
+    cone6.rotation.x += 0.01;
+    cone7.rotation.x -= 0.01;
+    cone8.rotation.x += 0.01;
+    cone9.rotation.x -= 0.01;
+    cone10.rotation.x += 0.01;
+    renderer.render(scene, camera);
+    };
+    update();
+
+    }
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
