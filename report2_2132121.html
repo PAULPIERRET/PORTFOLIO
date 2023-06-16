@@ -53,11 +53,11 @@
 
             // テクスチャー読み込み
             var textureLoader = new THREE.TextureLoader();
-            var texture = textureLoader.load('baseball1.png');
+            var texture = textureLoader.load('img/baseball1.png');
             var mat = new THREE.MeshPhongMaterial({ map: texture });
 
             // バンプマップ読み込み
-            var bump = textureLoader.load('baseball1_bump.png');
+            var bump = textureLoader.load('img/baseball1_bump.png');
             mat.bumpMap = bump;
             mat.bumpscale = 0.05;
 
@@ -69,7 +69,7 @@
 
             // テクスチャー読み込み
             var textureLoader2 = new THREE.TextureLoader();
-            var texture2 = textureLoader2.load('wood.jpg');
+            var texture2 = textureLoader2.load('img/wood.jpg');
             var mat2 = new THREE.MeshPhongMaterial({ map: texture2 });
 
             // 円柱を作成
