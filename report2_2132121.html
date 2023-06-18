@@ -27,10 +27,10 @@
             // シーンを作成
             const scene = new THREE.Scene();
 
-            // 背景用のテクスチャー読み込み
-            var textureLoader = new THREE.TextureLoader();
-            var backgroundTexture = textureLoader.load('img/ground.png');
-            scene.background = backgroundTexture;
+            // // 背景用のテクスチャー読み込み
+            // var textureLoader = new THREE.TextureLoader();
+            // var backgroundTexture = textureLoader.load('img/ground.png');
+            // scene.background = backgroundTexture;
 
             // カメラを作成
             const camera = new THREE.PerspectiveCamera(45, width / height);
@@ -88,6 +88,17 @@
             var textureLoader = new THREE.TextureLoader();
             var texture = textureLoader.load("img/surprised.png");
             const material = new THREE.SpriteMaterial({ map: texture, });
+
+            //カメラマンをスプライトで作成
+            var textureLoader = new THREE.TextureLoader();
+            var texture2 = textureLoader.load("img/cameraman.png");
+            const material2 = new THREE.SpriteMaterial({ map: texture2, });
+
+            // カメラマン左
+            const sprite2 = new THREE.Sprite(material);
+            sprite2.scale.set(1, 1, 1);
+            sprite2.position.set(1, 1, 0); //位置を指定
+            scene.add(sprite2);
 
             // 人左
             const sprite1 = new THREE.Sprite(material);
