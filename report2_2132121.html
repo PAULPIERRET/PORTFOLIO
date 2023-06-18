@@ -90,21 +90,21 @@
             const material = new THREE.SpriteMaterial({ map: texture, });
 
             //カメラマンをスプライトで作成
-            var textureLoader = new THREE.TextureLoader();
-            var texture2 = textureLoader.load("img/cameraman.png");
+            var textureLoader2 = new THREE.TextureLoader();
+            var texture2 = textureLoader2.load("img/cameraman.png");
             const material2 = new THREE.SpriteMaterial({ map: texture2, });
+
+            // 人左
+            const sprite1 = new THREE.Sprite(material);
+            sprite1.scale.set(1, 1, 1);
+            sprite1.position.set(-1, 1, 0); //位置を指定
+            scene.add(sprite1);
 
             // カメラマン左
             const sprite2 = new THREE.Sprite(material);
             sprite2.scale.set(1, 1, 1);
-            sprite2.position.set(1, 1, 0); //位置を指定
+            sprite2.position.set(3, 5, 0); //位置を指定
             scene.add(sprite2);
-
-            // 人左
-            const sprite1 = new THREE.Sprite(material);
-            sprite1.scale.set(1, 2, 1);
-            sprite1.position.set(-1, 1, 0); //位置を指定
-            scene.add(sprite1);
 
             update();
 
