@@ -84,6 +84,17 @@
             cylinder.position.set(1, 0, 0);
             scene.add(cylinder);
 
+            // 人をスプライトで作成
+            var textureLoader = new THREE.TextureLoader();
+            var texture = textureLoader.load("img/surprised.png");
+            const material = new THREE.SpriteMaterial({ map: texture, });
+
+            // 人左
+            const sprite1 = new THREE.Sprite(material);
+            sprite1.scale.set(1, 2, 1);
+            sprite1.position.set(-1, 1, 0); //位置を指定
+            scene.add(sprite1);
+
             update();
 
             // 毎フレーム時に実行されるループイベントです
