@@ -78,17 +78,25 @@
             var texture2 = textureLoader2.load('img/wood.jpg');
             var mat2 = new THREE.MeshPhongMaterial({ map: texture2 });
 
-            var sphereGeometry1 = new THREE.SphereGeometry(0.25, 32, 32);
-            var sphereMaterial1 = new THREE.MeshPhongMaterial({ color: 0x7b68ee });
-            var sphere2 = new THREE.Mesh(sphereGeometry1, sphereMaterial1);
-            sphere2.position.set(-2.5, -2, -5);
-            scene.add(sphere2);
 
             // 円柱を作成
             var cylinderGeometry = new THREE.CylinderGeometry(0.2, 0.2, 1, 32);
             var cylinder = new THREE.Mesh(cylinderGeometry, mat2);
             cylinder.position.set(1, 0, 0);
-            scene.add(cylinder);
+
+            //バットの下
+            var sphereGeometry1 = new THREE.SphereGeometry(0.25, 32, 32);
+            var sphereMaterial1 = new THREE.MeshPhongMaterial({ color: 0x7b68ee });
+            var sphere2 = new THREE.Mesh(sphereGeometry1, sphereMaterial1);
+            sphere2.position.set(0, -1, 0);
+
+
+            const bat = new THREE.Group();
+            bat.add(cylinder);
+            bat.add(sphere2);
+            bat.position.set(1, 0, 0);
+            scene.add(bat);
+
 
             // 人をスプライトで作成
             var textureLoader3 = new THREE.TextureLoader();
