@@ -82,10 +82,11 @@
             // 円柱を作成
             var cylinderGeometry = new THREE.CylinderGeometry(0.05, 0.2, 1.5, 32); // 半径と高さを調整して形状を変更します
             var cylinder = new THREE.Mesh(cylinderGeometry, mat2);
+            cylinder.rotation.x = Math.PI;
             cylinder.position.set(1, 0, 0);
 
             // バットの上部（球状）
-            var sphereGeometry = new THREE.SphereGeometry(0.4, 32, 32); // 半径を調整して形状を変更します
+            var sphereGeometry = new THREE.SphereGeometry(0.0125, 32, 32);
             var sphere2 = new THREE.Mesh(sphereGeometry, mat2);
             sphere2.position.set(1, -1, 0); // 位置を調整して円柱に合わせます
 
