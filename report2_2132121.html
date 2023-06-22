@@ -80,23 +80,20 @@
 
 
             // 円柱を作成
-            var cylinderGeometry = new THREE.CylinderGeometry(0.2, 0.2, 1, 32);
+            var cylinderGeometry = new THREE.CylinderGeometry(0.05, 0.2, 1.5, 32); // 半径と高さを調整して形状を変更します
             var cylinder = new THREE.Mesh(cylinderGeometry, mat2);
             cylinder.position.set(1, 0, 0);
 
-            //バットの下
-            var sphereGeometry1 = new THREE.SphereGeometry(0.25, 32, 32);
-            var sphereMaterial1 = new THREE.MeshPhongMaterial({ color: 0x7b68ee });
-            var sphere2 = new THREE.Mesh(sphereGeometry1, sphereMaterial1);
-            sphere2.position.set(1, -1, 0);
-
+            // バットの上部（球状）
+            var sphereGeometry = new THREE.SphereGeometry(0.4, 32, 32); // 半径を調整して形状を変更します
+            var sphere2 = new THREE.Mesh(sphereGeometry, mat2);
+            sphere2.position.set(1.3, 0, 0); // 位置を調整して円柱に合わせます
 
             const bat = new THREE.Group();
             bat.add(cylinder);
             bat.add(sphere2);
             bat.position.set(1, 0, 0);
             scene.add(bat);
-
 
             // 人をスプライトで作成
             var textureLoader3 = new THREE.TextureLoader();
