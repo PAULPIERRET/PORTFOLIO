@@ -27,10 +27,10 @@
             // シーンを作成
             const scene = new THREE.Scene();
 
-            // // 背景用のテクスチャー読み込み
-            // var textureLoader = new THREE.TextureLoader();
-            // var backgroundTexture = textureLoader.load('img/ground.png');
-            // scene.background = backgroundTexture;
+            // 背景用のテクスチャー読み込み
+             var textureLoader = new THREE.TextureLoader();
+             var backgroundTexture = textureLoader.load('img/ground.png');
+             scene.background = backgroundTexture;
 
             // カメラを作成
             const camera = new THREE.PerspectiveCamera(45, width / height);
