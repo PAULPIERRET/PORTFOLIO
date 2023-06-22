@@ -12,7 +12,8 @@
         window.addEventListener('DOMContentLoaded', init);
 
         var isColliding = false; // 衝突フラグをグローバルスコープで宣言
-        var num = 0;
+        var num1 = 0;
+        var num2 = 0;
 
         function init() {
             // サイズを指定
@@ -128,10 +129,14 @@
                 requestAnimationFrame(update);
 
                 //バットを回す
-                bat.rotation.x += 0.005;
-                if(num < 0.5){
+                if(num1 < 0.5){
+                    bat.rotation.x += 0.005;
+                    num1 += 0.005;
+                }
+                
+                if(num2 < 0.5){
                     bat.rotation.z += 0.0025;
-                    num += 0.0025;
+                    num2 += 0.0025;
                 }
                 // 球を回転させる
                 sphere.rotation.x += 0.01;
