@@ -12,6 +12,7 @@
         window.addEventListener('DOMContentLoaded', init);
 
         var isColliding = false; // 衝突フラグをグローバルスコープで宣言
+        var num = 0;
 
         function init() {
             // サイズを指定
@@ -128,7 +129,10 @@
 
                 //バットを回す
                 bat.rotation.x += 0.005;
-                bat.rotation.z += 0.0025;
+                while(num < 2){
+                    bat.rotation.z += 0.0025;
+                    num += 0.0025;
+                }
                 // 球を回転させる
                 sphere.rotation.x += 0.01;
                 sphere.rotation.y += 0.01;
@@ -144,7 +148,7 @@
                 }
 
                 // 衝突判定
-                if (sphere.position.distanceTo(cylinder.position) < 0.2) {
+                if (sphere.position.distanceTo(cylinder.position) < 0.1) {
                     // 衝突時の処理
                     isColliding = true; // 衝突フラグを立てる
                 }
