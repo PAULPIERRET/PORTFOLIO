@@ -126,6 +126,8 @@
                 renderer.render(scene, camera);
                 requestAnimationFrame(update);
 
+                //バットを回す
+                bat.rotation.z += 0.05;
                 // 球を回転させる
                 sphere.rotation.x += 0.01;
                 sphere.rotation.y += 0.01;
