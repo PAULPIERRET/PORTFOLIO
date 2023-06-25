@@ -134,11 +134,6 @@
                     bat.rotation.z += 0.00625;
                     num1 += 0.0125;
                     num2 += 0.00625;
-                }else if(num2 < 3 && num1 < 2.5){
-                    bat.rotation.y += 0.005;
-                    bat.rotation.x -= 0.005;
-                    num1 += 0.0125;
-                    num2 += 0.00625;
                 }
 
                 // 球を回転させる
@@ -156,7 +151,7 @@
                 }
 
                 // 衝突判定
-                if (sphere.position.distanceTo(cylinder.position) < 0.25) {
+                if (sphere.position.distanceTo(cylinder.position) < 0.0125) {
                     // 衝突時の処理
                     isColliding = true; // 衝突フラグを立てる
                 }
