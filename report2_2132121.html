@@ -129,13 +129,10 @@
                 requestAnimationFrame(update);
 
                 //バットを回す
-                if(num1 < 0.5){
+                if(num2 < 1.5 && num1 < 0.5){
                     bat.rotation.x += 0.005;
-                    num1 += 0.005;
-                }
-                
-                if(num2 < 1.5){
                     bat.rotation.z += 0.0025;
+                    num1 += 0.005;
                     num2 += 0.0025;
                 }
                 // 球を回転させる
