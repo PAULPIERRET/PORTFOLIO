@@ -74,7 +74,6 @@
             var texture2 = textureLoader2.load('img/wood.jpg');
             var mat2 = new THREE.MeshPhongMaterial({ map: texture2 });
 
-
             // 円柱を作成
             var cylinderGeometry = new THREE.CylinderGeometry(0.05, 0.2, 1.5, 32); // 半径と高さを調整して形状を変更します
             var cylinder = new THREE.Mesh(cylinderGeometry, mat2);
