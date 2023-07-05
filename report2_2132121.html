@@ -53,12 +53,6 @@
             // シーンに追加
             scene.add(directionalLight2);
 
-            // helper
-            const gridHelper = new THREE.GridHelper(2, 10); // size, step
-            scene.add(gridHelper);
-            const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
-            scene.add(axisHelper);
-
             // テクスチャー読み込み
             var textureLoader = new THREE.TextureLoader();
             var texture = textureLoader.load('img/baseball1.png');
@@ -80,14 +74,13 @@
             var texture2 = textureLoader2.load('img/wood.jpg');
             var mat2 = new THREE.MeshPhongMaterial({ map: texture2 });
 
-
             // 円柱を作成
             var cylinderGeometry = new THREE.CylinderGeometry(0.05, 0.2, 1.5, 32); // 半径と高さを調整して形状を変更します
             var cylinder = new THREE.Mesh(cylinderGeometry, mat2);
             cylinder.rotation.x = Math.PI;
             cylinder.position.set(1, 0, 0);
 
-            // バットの上部（球状）
+            // バットの下部（球状）
             var sphereGeometry = new THREE.SphereGeometry(0.125, 32, 32);
             var sphere2 = new THREE.Mesh(sphereGeometry, mat2);
             sphere2.position.set(1, -0.8, 0); // 位置を調整して円柱に合わせます
@@ -111,13 +104,13 @@
             // 人左
             const sprite1 = new THREE.Sprite(material1);
             sprite1.scale.set(1, 1, 1);
-            sprite1.position.set(-1, 1, -2); //位置を指定
+            sprite1.position.set(-4, 0.4, -2); //位置を指定
             scene.add(sprite1);
 
             // カメラマン右
             const sprite2 = new THREE.Sprite(material2);
             sprite2.scale.set(1, 1, 1);
-            sprite2.position.set(3, 2, -1); //位置を指定
+            sprite2.position.set(2, 0, -1); //位置を指定
             scene.add(sprite2);
 
             update();
@@ -130,10 +123,10 @@
 
                 //バットを回す
                 if(num2 < 2 && num1 < 1.5){
-                    bat.rotation.x += 0.0125;
-                    bat.rotation.z += 0.00625;
-                    num1 += 0.0125;
-                    num2 += 0.00625;
+                    bat.rotation.x += 0.00625;
+                    bat.rotation.z += 0.003125;
+                    num1 += 0.00625;
+                    num2 += 0.003125;
                 }
 
                 // 球を回転させる
@@ -151,7 +144,7 @@
                 }
 
                 // 衝突判定
-                if (sphere.position.distanceTo(cylinder.position) == 0) {
+                if (sphere.position.distanceTo(bat.position) < 0.01) {
                     // 衝突時の処理
                     isColliding = true; // 衝突フラグを立てる
                 }
