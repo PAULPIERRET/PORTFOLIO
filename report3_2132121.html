@@ -67,7 +67,8 @@
 
             // 円柱の作成
             const arrowCylinderGeometry = new THREE.CylinderGeometry(0.025, 0.025, 1.2, 32);
-            const arrowCylinder = new THREE.Mesh(arrowCylinderGeometry, mat2);
+            const arrowCylinderMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // 適切なマテリアルを設定する
+            const arrowCylinder = new THREE.Mesh(arrowCylinderGeometry, arrowCylinderMaterial);
             arrowCylinder.position.y = 0.6;
             arrow.add(arrowCylinder);
 
