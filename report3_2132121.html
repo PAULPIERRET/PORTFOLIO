@@ -30,6 +30,7 @@
 
             // カメラを作成
             const camera = new THREE.PerspectiveCamera(45, width / height);
+            camera.position.z = 5; // カメラの位置を設定
 
             // 平行光源1
             var directionalLight1 = new THREE.DirectionalLight(0xffffff);
@@ -88,6 +89,9 @@
 
                 // レンダリング
                 renderer.render(scene, camera);
+
+                // アニメーションを継続
+                requestAnimationFrame(update);
             }
 
         }
