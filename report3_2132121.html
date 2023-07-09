@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script src="OrbitControls.js"></script>
 </head>
 
 <body>
@@ -23,6 +24,9 @@
             // シーンの作成
             const scene = new THREE.Scene();
 
+            // フォグを設定
+            scene.fog = new THREE.Fog(0x000000, 50, 2000);
+
             // 背景用のテクスチャー読み込み
             var textureLoader = new THREE.TextureLoader();
             var backgroundTexture = textureLoader.load('img/sunset.png');
@@ -30,7 +34,12 @@
 
             // カメラを作成
             const camera = new THREE.PerspectiveCamera(45, width / height);
-            camera.position.z = 2; // カメラの位置を設定
+            // カメラの初期座標を設定
+            camera.position.set(0, 0, 1000);
+
+            // カメラコントローラーを作成
+            const controls = new THREE.OrbitControls(camera);
+            controls.autoRotate = true;
 
             // 平行光源1
             var directionalLight1 = new THREE.DirectionalLight(0xffffff);
