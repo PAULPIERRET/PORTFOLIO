@@ -21,7 +21,7 @@
             renderer.setSize(width, height);
 
             // シーンの作成
-            var scene = new THREE.Scene();
+            const scene = new THREE.Scene();
 
             // 背景用のテクスチャー読み込み
             var textureLoader = new THREE.TextureLoader();
@@ -30,6 +30,17 @@
 
             // カメラを作成
             const camera = new THREE.PerspectiveCamera(45, width / height);
+
+            // 平行光源1
+            var directionalLight1 = new THREE.DirectionalLight(0xffffff);
+            directionalLight1.position.set(10, 10, 10);
+            // シーンに追加
+            scene.add(directionalLight1);
+            // 平行光源2
+            var directionalLight2 = new THREE.DirectionalLight(0x888888);
+            directionalLight2.position.set(-10, -10, 10);
+            // シーンに追加
+            scene.add(directionalLight2);
 
             // テクスチャの読み込み
             var textureLoader = new THREE.TextureLoader();
@@ -61,7 +72,7 @@
             var particles = new THREE.Points(geometry, material);
 
             // ビルボードの設定
-            //particles.rotation.z = Math.PI / 2; // パーティクルをカメラの方向に向ける
+            particles.rotation.z = Math.PI / 2; // パーティクルをカメラの方向に向ける
 
             // メッシュをシーンに追加
             scene.add(particles);
@@ -70,7 +81,6 @@
 
             // アニメーションループの定義
             function update() {
-                requestAnimationFrame(animate);
 
                 // メッシュを回転させるなどのアニメーション処理をここに追加してください
                 particles.rotation.y += 0.01; // Y軸回転
