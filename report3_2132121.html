@@ -19,7 +19,7 @@
 
         // テクスチャの読み込み
         var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load('img/cameraman.png');
+        var texture = textureLoader.load('img/bird.png');
 
         // パーティクルのジオメトリの作成
         var geometry = new THREE.Geometry();
@@ -47,7 +47,7 @@
         var particles = new THREE.Points(geometry, material);
 
         // ビルボードの設定
-        particles.rotation.x = Math.PI / 2; // パーティクルをカメラの方向に向ける
+        particles.rotation.z = Math.PI / 2; // パーティクルをカメラの方向に向ける
 
         // メッシュをシーンに追加
         scene.add(particles);
@@ -58,7 +58,6 @@
 
             // メッシュを回転させるなどのアニメーション処理をここに追加してください
             particles.rotation.y += 0.01; // Y軸回転
-            particles.rotation.x += 0.01; // X軸回転
 
             // レンダリング
             renderer.render(scene, camera);
