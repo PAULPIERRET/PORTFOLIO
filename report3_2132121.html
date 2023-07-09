@@ -23,15 +23,20 @@
 
         // パーティクルのジオメトリの作成
         var geometry = new THREE.Geometry();
-        geometry.vertices.push(
-            new THREE.Vector3(0, 0, 0),
-            new THREE.Vector3(2, 0, 0),
-            new THREE.Vector3(3, 0, 0)
-        );
+        
+        // パーティクルの座標をランダムに生成して追加
+        for (let i = 0; i < 1000; i++) {
+            var vertex = new THREE.Vector3(
+                Math.random() * 4 - 2, // X座標をランダムに生成
+                Math.random() * 4 - 2, // Y座標をランダムに生成
+                Math.random() * 4 - 2  // Z座標をランダムに生成
+            );
+            geometry.vertices.push(vertex);
+        }
 
         // パーティクルのマテリアルの作成
         var material = new THREE.PointsMaterial({
-            size: 1,
+            size: 0.1,
             color: 0xffffff,
             map: texture,
             transparent: true,
