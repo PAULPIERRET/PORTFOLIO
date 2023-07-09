@@ -1,10 +1,8 @@
 <html>
-
 <head>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
 </head>
-
 <body>
     <script>
         // シーンの作成
@@ -19,32 +17,43 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // ポイントクラウドのジオメトリの作成
-        var geometry = new THREE.Geometry();
+        // テクスチャの読み込み
+        var textureLoader = new THREE.TextureLoader();
+        var texture = textureLoader.load('img/cameraman.png');
 
-        // パーティクルの座標を追加
+        // パーティクルのジオメトリの作成
+        var geometry = new THREE.Geometry();
         geometry.vertices.push(
             new THREE.Vector3(0, 0, 0),
             new THREE.Vector3(2, 0, 0),
             new THREE.Vector3(3, 0, 0)
         );
 
-        // ポイントクラウドのマテリアルの作成
-        var material = new THREE.PointsMaterial({ size: 1, color: 0x00ff00 }); // 緑色
+        // パーティクルのマテリアルの作成
+        var material = new THREE.PointsMaterial({
+            size: 1,
+            color: 0xffffff,
+            map: texture,
+            transparent: true,
+            alphaTest: 0.5
+        });
 
-        // ポイントクラウドのメッシュの作成
-        var pointCloud = new THREE.Points(geometry, material);
+        // パーティクルのメッシュの作成
+        var particles = new THREE.Points(geometry, material);
+
+        // ビルボードの設定
+        particles.rotation.z = Math.PI / 2; // パーティクルをカメラの方向に向ける
 
         // メッシュをシーンに追加
-        scene.add(pointCloud);
+        scene.add(particles);
 
         // アニメーションループの定義
         function animate() {
             requestAnimationFrame(animate);
 
             // メッシュを回転させるなどのアニメーション処理をここに追加してください
-            pointCloud.rotation.y += 0.01; // Y軸回転
-            pointCloud.rotation.x += 0.01; // X軸回転
+            particles.rotation.y += 0.01; // Y軸回転
+            particles.rotation.x += 0.01; // X軸回転
 
             // レンダリング
             renderer.render(scene, camera);
@@ -54,5 +63,4 @@
         animate();
     </script>
 </body>
-
 </html>
