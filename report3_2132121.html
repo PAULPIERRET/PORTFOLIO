@@ -43,6 +43,7 @@
             requestAnimationFrame(animate);
 
             // メッシュを回転させるなどのアニメーション処理をここに追加してください
+            pointCloud.rotation.y += 0.01; // Y軸回転
 
             // レンダリング
             renderer.render(scene, camera);
