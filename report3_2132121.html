@@ -8,76 +8,76 @@
 <body>
     <script>
         function init() {
-        // シーンの作成
-        var scene = new THREE.Scene();
+            // シーンの作成
+            var scene = new THREE.Scene();
 
-        // 背景用のテクスチャー読み込み
-        var textureLoader = new THREE.TextureLoader();
-        var backgroundTexture = textureLoader.load('img/sunset.png');
-        scene.background = backgroundTexture;
+            // 背景用のテクスチャー読み込み
+            var textureLoader = new THREE.TextureLoader();
+            var backgroundTexture = textureLoader.load('img/sunset.png');
+            scene.background = backgroundTexture;
 
-        // サイズを指定
-        const width = 800;
-        const height = 600;
+            // サイズを指定
+            const width = 800;
+            const height = 600;
 
-        // カメラを作成
-        const camera = new THREE.PerspectiveCamera(45, width / height);
+            // カメラを作成
+            const camera = new THREE.PerspectiveCamera(45, width / height);
 
-        // レンダラーの作成
-        var renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+            // レンダラーの作成
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-        // テクスチャの読み込み
-        var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load('img/bird.png');
+            // テクスチャの読み込み
+            var textureLoader = new THREE.TextureLoader();
+            var texture = textureLoader.load('img/bird.png');
 
-        // パーティクルのジオメトリの作成
-        var geometry = new THREE.Geometry();
+            // パーティクルのジオメトリの作成
+            var geometry = new THREE.Geometry();
 
-        // パーティクルの座標をランダムに生成して追加
-        for (let i = 0; i < 100; i++) {
-            var vertex = new THREE.Vector3(
-                Math.random() * 4 - 2, // X座標をランダムに生成
-                Math.random() * 4 - 2, // Y座標をランダムに生成
-                Math.random() * 4 - 2  // Z座標をランダムに生成
-            );
-            geometry.vertices.push(vertex);
+            // パーティクルの座標をランダムに生成して追加
+            for (let i = 0; i < 100; i++) {
+                var vertex = new THREE.Vector3(
+                    Math.random() * 4 - 2, // X座標をランダムに生成
+                    Math.random() * 4 - 2, // Y座標をランダムに生成
+                    Math.random() * 4 - 2  // Z座標をランダムに生成
+                );
+                geometry.vertices.push(vertex);
+            }
+
+            // パーティクルのマテリアルの作成
+            var material = new THREE.PointsMaterial({
+                size: 0.1,
+                color: 0xffffff,
+                map: texture,
+                transparent: true,
+                alphaTest: 0.5
+            });
+
+            // パーティクルのメッシュの作成
+            var particles = new THREE.Points(geometry, material);
+
+            // ビルボードの設定
+            //particles.rotation.z = Math.PI / 2; // パーティクルをカメラの方向に向ける
+
+            // メッシュをシーンに追加
+            scene.add(particles);
+
+            update();
+
+            // アニメーションループの定義
+            function update() {
+                requestAnimationFrame(animate);
+
+                // メッシュを回転させるなどのアニメーション処理をここに追加してください
+                particles.rotation.y += 0.01; // Y軸回転
+                particles.rotation.x += 0.01; // X軸回転
+
+                // レンダリング
+                renderer.render(scene, camera);
+            }
+
         }
-
-        // パーティクルのマテリアルの作成
-        var material = new THREE.PointsMaterial({
-            size: 0.1,
-            color: 0xffffff,
-            map: texture,
-            transparent: true,
-            alphaTest: 0.5
-        });
-
-        // パーティクルのメッシュの作成
-        var particles = new THREE.Points(geometry, material);
-
-        // ビルボードの設定
-        //particles.rotation.z = Math.PI / 2; // パーティクルをカメラの方向に向ける
-
-        // メッシュをシーンに追加
-        scene.add(particles);
-
-        // アニメーションループの定義
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // メッシュを回転させるなどのアニメーション処理をここに追加してください
-            particles.rotation.y += 0.01; // Y軸回転
-            particles.rotation.x += 0.01; // X軸回転
-
-            // レンダリング
-            renderer.render(scene, camera);
-        }
-
-        // アニメーションを開始
-        animate();
-    }
     </script>
 </body>
 
