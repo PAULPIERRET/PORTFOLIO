@@ -19,7 +19,7 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // ジオメトリの作成
+        // ポイントクラウドのジオメトリの作成
         var geometry = new THREE.Geometry();
 
         // パーティクルの座標を追加
@@ -29,14 +29,14 @@
             new THREE.Vector3(3, 0, 0)
         );
 
-        // パーティクルのマテリアルの作成
+        // ポイントクラウドのマテリアルの作成
         var material = new THREE.PointsMaterial({ size: 1, color: 0x00ff00 }); // 緑色
 
-        // パーティクルのメッシュの作成
-        var mesh = new THREE.Points(geometry, material);
+        // ポイントクラウドのメッシュの作成
+        var pointCloud = new THREE.Points(geometry, material);
 
         // メッシュをシーンに追加
-        scene.add(mesh);
+        scene.add(pointCloud);
 
         // アニメーションループの定義
         function animate() {
