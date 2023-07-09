@@ -78,6 +78,23 @@
             // メッシュをシーンに追加
             scene.add(particles);
 
+            // テクスチャー読み込み
+            var textureLoader = new THREE.TextureLoader();
+            var texture = textureLoader.load('img/sun.jpg');
+            var mat = new THREE.MeshPhongMaterial({ map: texture });
+
+            // バンプマップ読み込み
+            var bump = textureLoader.load('img/sun_bump.jpg');
+            mat.bumpMap = bump;
+            mat.bumpscale = 0.05;
+
+            // 球を作成
+            var geometry = new THREE.SphereGeometry(0.25, 32, 32);
+            var sphere = new THREE.Mesh(geometry, mat);
+            sphere.position.set(-3, 2, 0);
+            scene.add(sphere);
+
+
             update();
 
             // アニメーションループの定義
