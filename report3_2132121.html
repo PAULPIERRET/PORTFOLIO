@@ -25,11 +25,6 @@
             // シーンを作成
             const scene = new THREE.Scene();
 
-            // 背景用のテクスチャー読み込み
-            var textureLoader = new THREE.TextureLoader();
-            var backgroundTexture = textureLoader.load('img/ground.png');
-            scene.background = backgroundTexture;
-
             // カメラを作成
             const camera = new THREE.PerspectiveCamera(45, width / height);
             // カメラの初期座標を設定
@@ -98,12 +93,12 @@
 
             // 人をスプライトで作成
             var textureLoader3 = new THREE.TextureLoader();
-            var texture3 = textureLoader3.load("img/surprised.png");
+            var texture3 = textureLoader3.load("https://example.com/img/surprised.png");
             const material1 = new THREE.SpriteMaterial({ map: texture3 });
 
             //カメラマンをスプライトで作成
             var textureLoader4 = new THREE.TextureLoader();
-            var texture4 = textureLoader4.load("img/cameraman.png");
+            var texture4 = textureLoader4.load("https://example.com/img/cameraman.png");
             const material2 = new THREE.SpriteMaterial({ map: texture4 });
 
             // 人左
@@ -118,14 +113,8 @@
             sprite2.position.set(3, 2, -1); //位置を指定
             scene.add(sprite2);
 
-            update();
-
-            // 毎フレーム時に実行されるループイベントです
-            function update() {
-                // レンダリング
-                renderer.render(scene, camera);
-                requestAnimationFrame(update);
-            }
+            // レンダリング
+            renderer.render(scene, camera);
         }
     </script>
 </body>
