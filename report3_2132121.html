@@ -11,6 +11,15 @@
         window.addEventListener('DOMContentLoaded', init);
 
         function init() {
+            // サイズを指定
+            const width = 800;
+            const height = 600;
+
+            // レンダラーの作成
+            var renderer = new THREE.WebGLRenderer();
+            document.body.appendChild(renderer.domElement);
+            renderer.setSize(width, height);
+
             // シーンの作成
             var scene = new THREE.Scene();
 
@@ -19,17 +28,8 @@
             var backgroundTexture = textureLoader.load('img/sunset.png');
             scene.background = backgroundTexture;
 
-            // サイズを指定
-            const width = 800;
-            const height = 600;
-
             // カメラを作成
             const camera = new THREE.PerspectiveCamera(45, width / height);
-
-            // レンダラーの作成
-            var renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
 
             // テクスチャの読み込み
             var textureLoader = new THREE.TextureLoader();
